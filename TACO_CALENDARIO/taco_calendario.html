@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="./imagen/taco_calendario.jpg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Taco Calendario</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <h3 class="text-center">AGOSTO</h3>
+                <div class="card">
+                    <div id="num" class="card-body text-center">
+                        La frase del día es...
+                    </div>   <!--fin div card body-->
+
+                </div><!-- fin div card-->
+                <br>
+                <button id="boton" class="btn btn-primary btn-block">Frases célebres</button>
+                <br>
+                
+                <h6 id="buscando">Cargando...</h6>
+            </div><!--fin div col-->
+            
+        </div><!--fin div row-->
+    </div><!--fin div container-->
+    
+
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){//el codigo se ejecutará dentro de la funcion
+            $("#buscando").hide();//se oculta el indicador de carga
+            $("#boton").click(function(){//cuando se hace click en el boton, la función se ejecuta
+                $("#buscando").show();//indica visualmente que algo se está cargando
+                $("#num").text("La frase del día es...");//cambia el contenido de texto por "La frase..."
+                $(this).prop("disabled, true");//desabilita el boton en el que se hizo click y asi se evita que se hagan demasiados clicks
+                $("#num").load("calendario.php", function(){//carga el contenido de el archivo.php en el elemento num
+
+                $("#boton").prop("disabled",false);//habilita nuevamente el boton despues que se haya cargado el contenido
+                $("#buscando").hide();//oculta el indicador de carga una vez que se ha completado la carga
+
+
+
+            });
+        });
+    });
+
+    </script>
+    
+  </body>
+</html>
